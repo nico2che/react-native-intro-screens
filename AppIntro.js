@@ -340,6 +340,7 @@ class AppIntro extends Component {
 
   refScrollView = view => {
     this.scrollView = view;
+    this.props.appintroRef(view)
   }
 
   render() {
