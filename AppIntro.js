@@ -209,6 +209,8 @@ class AppIntro extends Component {
   }
 
   renderPagination = (index, total, context) => {
+    if (!this.props.showsPagination) return null;
+    
     let isDoneBtnShow;
     let isSkipBtnShow;
     if (index === total - 1) {
