@@ -1,6 +1,4 @@
-<h3 align="center">
-  rn-falcon-app-intro
-</h3>
+# react-native-intro-screens
 
 <p align="center">
   <a href="https://facebook.github.io/react-native/">React Native</a> component <br/>
@@ -9,8 +7,8 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/rn-falcon-app-intro"><img src="https://img.shields.io/npm/v/rn-falcon-app-intro.svg?style=flat-square"></a>
-  <a href="https://www.npmjs.com/package/rn-falcon-app-intro"><img src="https://img.shields.io/npm/dm/rn-falcon-app-intro.svg?style=flat-square"></a>
+  <a href="https://www.npmjs.com/package/react-native-intro-screens"><img src="https://img.shields.io/npm/v/react-native-intro-screens.svg?style=flat-square"></a>
+  <a href="https://www.npmjs.com/package/react-native-intro-screens"><img src="https://img.shields.io/npm/dm/react-native-intro-screens.svg?style=flat-square"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
 </p>
 <br />
@@ -26,7 +24,7 @@
 
 # Example
 
-[Example code](https://github.com/Richi2293/rn-falcon-app-intro/tree/master/Example)
+[Example code](https://github.com/Richi2293/react-native-intro-screens/tree/master/Example)
 
 ### Support ios and android
 <img src="http://i.giphy.com/3o6ozjLoOnYTXfzJgQ.gif">
@@ -35,13 +33,12 @@
 
 For React Native <=60
 ```bash
-$ npm i rn-falcon-app-intro@1.2.3 --save
+$ npm i rn-falcon-app-intro@1.2.3
 ```
 For React Native >=60
 ```bash
-$ npm i rn-falcon-app-intro --save
+$ npm i react-native-intro-screens
 ```
-
 
 ### Basic Usage
 
@@ -53,57 +50,57 @@ You can use pageArray quick generation your app intro with parallax effect. With
 ```javascript
 import React, { Component } from 'react';
 import { AppRegistry, Alert } from 'react-native';
-import AppIntro from 'rn-falcon-app-intro';
+import AppIntro from 'react-native-intro-screens';
 
-class Example extends Component {
-  onSkipBtnHandle = (index) => {
+function Example() {
+  const onSkipBtnHandle = (index) => {
     Alert.alert('Skip');
     console.log(index);
   }
-  doneBtnHandle = () => {
+  const doneBtnHandle = () => {
     Alert.alert('Done');
   }
-  nextBtnHandle = (index) => {
+  const nextBtnHandle = (index) => {
     Alert.alert('Next');
     console.log(index);
   }
-  onSlideChangeHandle = (index, total) => {
+  const onSlideChangeHandle = (index, total) => {
     console.log(index, total);
   }
-  render() {
-    const pageArray = [{
-      title: 'Page 1',
-      description: 'Description 1',
-      img: 'https://goo.gl/Bnc3XP',
-      imgStyle: {
-        height: 80 * 2.5,
-        width: 109 * 2.5,
-      },
-      backgroundColor: '#fa931d',
-      fontColor: '#fff',
-      level: 10,
-    }, {
-      title: 'Page 2',
-      description: 'Description 2',
-      img: require('../assets/some_image.png'),
-      imgStyle: {
-        height: 93 * 2.5,
-        width: 103 * 2.5,
-      },
-      backgroundColor: '#a4b602',
-      fontColor: '#fff',
-      level: 10,
-    }];
-    return (
-      <AppIntro
-        onNextBtnClick={this.nextBtnHandle}
-        onDoneBtnClick={this.doneBtnHandle}
-        onSkipBtnClick={this.onSkipBtnHandle}
-        onSlideChange={this.onSlideChangeHandle}
-        pageArray={pageArray}
-      />
-    );
-  }
+
+  const pageArray = [{
+    title: 'Page 1',
+    description: 'Description 1',
+    img: 'https://goo.gl/Bnc3XP',
+    imgStyle: {
+      height: 80 * 2.5,
+      width: 109 * 2.5,
+    },
+    backgroundColor: '#fa931d',
+    fontColor: '#fff',
+    level: 10,
+  }, {
+    title: 'Page 2',
+    description: 'Description 2',
+    img: require('../assets/some_image.png'),
+    imgStyle: {
+      height: 93 * 2.5,
+      width: 103 * 2.5,
+    },
+    backgroundColor: '#a4b602',
+    fontColor: '#fff',
+    level: 10,
+  }];
+
+  return (
+    <AppIntro
+      onNextBtnClick={this.nextBtnHandle}
+      onDoneBtnClick={this.doneBtnHandle}
+      onSkipBtnClick={this.onSkipBtnHandle}
+      onSlideChange={this.onSlideChangeHandle}
+      pageArray={pageArray}
+    />
+  );
 }
 
 AppRegistry.registerComponent('Example', () => Example);
@@ -111,7 +108,7 @@ AppRegistry.registerComponent('Example', () => Example);
 
 ### Usage
 
-If you need customized page like my Example, you can  pass in `View` component into AppIntro component and set level. Remember any need use parallax effect component, Need to be `<View level={10}></View>` inside.
+If you need customized page like my Example, you can pass in `View` component into AppIntro component and set level. Remember any need use parallax effect component, Need to be `<View level={10}></View>` inside.
 
 <img src="http://i.giphy.com/26AHwds1g5HjXrd4s.gif">
 
@@ -123,7 +120,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import AppIntro from 'rn-falcon-app-intro';
+import AppIntro from 'react-native-intro-screens';
 
 const styles = StyleSheet.create({
   slide: {
@@ -140,34 +137,31 @@ const styles = StyleSheet.create({
   },
 });
 
-class Example extends Component {
-
-  render() {
-    return (
-      <AppIntro>
-        <View style={[styles.slide,{ backgroundColor: '#fa931d' }]}>
-          <View level={10}><Text style={styles.text}>Page 1</Text></View>
-          <View level={15}><Text style={styles.text}>Page 1</Text></View>
-          <View level={8}><Text style={styles.text}>Page 1</Text></View>
-        </View>
-        <View style={[styles.slide, { backgroundColor: '#a4b602' }]}>
-          <View level={-10}><Text style={styles.text}>Page 2</Text></View>
-          <View level={5}><Text style={styles.text}>Page 2</Text></View>
-          <View level={20}><Text style={styles.text}>Page 2</Text></View>
-        </View>
-        <View style={[styles.slide,{ backgroundColor: '#fa931d' }]}>
-          <View level={8}><Text style={styles.text}>Page 3</Text></View>
-          <View level={0}><Text style={styles.text}>Page 3</Text></View>
-          <View level={-10}><Text style={styles.text}>Page 3</Text></View>
-        </View>
-        <View style={[styles.slide, { backgroundColor: '#a4b602' }]}>
-          <View level={5}><Text style={styles.text}>Page 4</Text></View>
-          <View level={10}><Text style={styles.text}>Page 4</Text></View>
-          <View level={15}><Text style={styles.text}>Page 4</Text></View>
-        </View>
-      </AppIntro>
-    );
-  }
+function Example() {
+  return (
+    <AppIntro>
+      <View style={[styles.slide,{ backgroundColor: '#fa931d' }]}>
+        <View level={10}><Text style={styles.text}>Page 1</Text></View>
+        <View level={15}><Text style={styles.text}>Page 1</Text></View>
+        <View level={8}><Text style={styles.text}>Page 1</Text></View>
+      </View>
+      <View style={[styles.slide, { backgroundColor: '#a4b602' }]}>
+        <View level={-10}><Text style={styles.text}>Page 2</Text></View>
+        <View level={5}><Text style={styles.text}>Page 2</Text></View>
+        <View level={20}><Text style={styles.text}>Page 2</Text></View>
+      </View>
+      <View style={[styles.slide,{ backgroundColor: '#fa931d' }]}>
+        <View level={8}><Text style={styles.text}>Page 3</Text></View>
+        <View level={0}><Text style={styles.text}>Page 3</Text></View>
+        <View level={-10}><Text style={styles.text}>Page 3</Text></View>
+      </View>
+      <View style={[styles.slide, { backgroundColor: '#a4b602' }]}>
+        <View level={5}><Text style={styles.text}>Page 4</Text></View>
+        <View level={10}><Text style={styles.text}>Page 4</Text></View>
+        <View level={15}><Text style={styles.text}>Page 4</Text></View>
+      </View>
+    </AppIntro>
+  );
 }
 AppRegistry.registerComponent('Example', () => Example);
 ```
