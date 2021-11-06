@@ -347,13 +347,13 @@ class AppIntro extends Component {
 
   render() {
     const childrens = this.props.children;
-    // const { pageArray } = this.props;
+    const { pageArray } = this.props;
     let pages = [];
-    // if (pageArray.length > 0) {
-    //   pages = pageArray.map((page, i) => this.renderBasicSlidePage(i, page));
-    // } else {
+    if (pageArray.length > 0) {
+      pages = pageArray.map((page, i) => this.renderBasicSlidePage(i, page));
+    } else {
       pages = childrens.map((children, i) => this.renderChild(children, i, i));
-    // }
+    }
 
     if (this.isToTintStatusBar()) {
       StatusBar.setBackgroundColor(this.shadeStatusBarColor(this.props.pageArray[0].backgroundColor, -0.3), false);
